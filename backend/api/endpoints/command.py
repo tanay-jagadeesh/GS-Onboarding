@@ -63,4 +63,7 @@ def delete_command(id: int):
     if not command:
         raise ValueError(f"Command {id} not found")
     
+    #Delete the items with the given id if it exists
+    db.delete(command)
+    db.commit()
     
