@@ -37,7 +37,9 @@ class MainCommand(BaseSQLModel, table=True):
         #Case 1: Both are None
         if self.params is None and self.format is None:
             return self
-        
+        # Case 2: One is none and other is not
+        if self.params is None != self.format is None:
+            raise ValueError("Both params and formats must be None")
     
     
 
