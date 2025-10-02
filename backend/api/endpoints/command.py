@@ -67,3 +67,7 @@ def delete_command(id: int):
     db.delete(command)
     db.commit()
     
+    # Return appropriate values
+    query = select(Command)
+    items = db.exec(query).all()
+    return("data": items)
