@@ -40,8 +40,14 @@ class MainCommand(BaseSQLModel, table=True):
         # Case 2: One is none and other is not
         if self.params is None != self.format is None:
             raise ValueError("Both params and formats must be None")
-    
-    
+
+        # Case 3: BOth are provided (comma lengths)
+
+        params_spl = self.params.split(", ")
+        format_spl = self.format.split(", ")
+
+        if len(params_spl) != len(format_spl):
+            raise ValueError("params and format do not have the same comma separation")
 
 
 class Command(BaseSQLModel, table=True):
