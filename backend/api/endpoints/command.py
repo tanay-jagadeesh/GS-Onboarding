@@ -31,7 +31,19 @@ def create_command(payload: CommandRequest):
     :return: returns a json object with field of "data" under which there is the payload now pulled from the database 
     """
     # TODO:(Member) Implement this endpoint
-                      
+    
+    # New command instance from req payload
+    new_command = Command(
+        command_type = payload.command_type,
+        status = "PENDING",
+        created_on = datetime.now(),
+        updated_on = datetime.now()
+    )
+
+    #Save to database
+    db.add(new_command)
+    db.commit()
+    db.refresh(new_command)
 
 
 @command_router.delete("/{id}", response_model=CommandListResponse)
