@@ -46,9 +46,11 @@ class MainCommand(BaseSQLModel, table=True):
         params_spl = self.params.split(", ")
         format_spl = self.format.split(", ")
 
+        
         if len(params_spl) != len(format_spl):
             raise ValueError("params and format do not have the same comma separation")
-
+        #Return
+        return self
 
 class Command(BaseSQLModel, table=True):
     """
