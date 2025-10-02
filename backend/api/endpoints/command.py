@@ -5,6 +5,7 @@ from backend.api.models.request_model import CommandRequest
 from backend.api.models.response_model import CommandListResponse, CommandSingleResponse
 from backend.data.data_models import Command
 from backend.data.engine import get_db
+from datetime import datetime
 
 # Prefix: "/commands"
 command_router = APIRouter(tags=["Commands"])
@@ -45,6 +46,8 @@ def create_command(payload: CommandRequest):
     db.commit()
     db.refresh(new_command)
 
+    return {"data": new_command}
+
 
 @command_router.delete("/{id}", response_model=CommandListResponse)
 def delete_command(id: int):
@@ -55,3 +58,9 @@ def delete_command(id: int):
     :return: returns the list of commands after deleting the item
     """
     # TODO:(Member) Implement this endpoint
+
+    #Find the command through the "ID" 
+    if not command:
+        raise ValueError(f"Command {id} not found")
+    
+    
