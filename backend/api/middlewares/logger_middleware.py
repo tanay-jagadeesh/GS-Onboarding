@@ -23,5 +23,5 @@ class LoggerMiddleware(BaseHTTPMiddleware):
             response = await call_next(request)
             end = datetime.now()
             length_of_time = (end-start).total_seconds()
-            print(f"{request.method} {request.url.path} took {length_of_time:.3f}s")
+            logger.info(f"{request.method} {request.url.path} took {length_of_time:.3f}s")
             return response
