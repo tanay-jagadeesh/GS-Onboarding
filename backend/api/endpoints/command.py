@@ -66,8 +66,6 @@ def delete_command(id: int):
     #Delete the items with the given id if it exists
     db.delete(command)
     db.commit()
-    
     # Return appropriate values
-    get_commands(db)
-    items = db.exec(query).all()
+    return get_db_commands()
     return("data": items)
