@@ -18,10 +18,9 @@ class LoggerMiddleware(BaseHTTPMiddleware):
         :return: Response from endpoint
         """
         # TODO:(Member) Finish implementing this method
-        async def dispatch(self, request: Request, call_next):
-            start = datetime.now()
-            response = await call_next(request)
-            end = datetime.now()
-            length_of_time = (end-start).total_seconds()
-            logger.info(f"{request.method} {request.url.path} took {length_of_time:.3f}s")
-            return response
+        start = datetime.now()
+        response = await call_next(request)
+        end = datetime.now()
+        length_of_time = (end-start).total_seconds()
+        logger.info(f"{request.method} {request.url.path} took {length_of_time:.3f}s")
+        return response
