@@ -68,4 +68,4 @@ def delete_command(id: int):
     db.commit()
     # Return appropriate values
     return get_db_commands()
-    return("data": items)
+    
