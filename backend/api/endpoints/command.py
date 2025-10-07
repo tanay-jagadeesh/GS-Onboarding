@@ -61,7 +61,7 @@ def delete_command(id: int):
 
     #Find the command through the "ID" 
     if not command:
-        raise ValueError(f"Command {id} not found")
+        raise HTTPException(status_code = 404, detail = f"Command {id} not found")
     
     #Delete the items with the given id if it exists
     db.delete(command)
